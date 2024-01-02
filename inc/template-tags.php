@@ -118,9 +118,9 @@ if ( ! function_exists( 'draft_post_thumbnail' ) ) :
                 ?>
                 <div class="card-body">
                     <h5 class="card-title"><?php the_title(); ?></h5>
-                    <p class="card-text"><?php the_excerpt(); ?></p>
+              
                     <!-- Remove or comment out the line below to remove the "Read more" button -->
-                    <!-- <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read more</a> -->
+               
                 </div>
             </div><!-- .card -->
         <?php else : ?>

@@ -907,9 +907,72 @@ textarea {
 	display: block;
 }
 
+/* Custom Footer Styles */
+#site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#site-footer a {
+    color: #fdb100;
+}
+
+.footer-section-one,
+.footer-section-two {
+    margin-bottom: 20px;
+}
+
+/* Additional Styles for Newsletter Form */
+#newsletter-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#newsletter-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#newsletter-form input[type="submit"] {
+    background-color: #fdb100;
+    color: #333;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
 
 
+/* Style for Footer Section One */
+.footer-section-one {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
 
+/* Style for Footer Section Two */
+.footer-section-two {
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+}
+
+/* Style for Newsletter Form */
+#newsletter-form {
+    margin-bottom: 20px;
+}
+
+#newsletter-form h4 {
+    color: #fff;
+}
+
+#newsletter-form input[type="text"],
+#newsletter-form input[type="submit"] {
+    /* Add your styles for the newsletter form inputs and submit button */
+    margin-bottom: 10px;
+}
 
 
 /*--------------------------------------------------------------

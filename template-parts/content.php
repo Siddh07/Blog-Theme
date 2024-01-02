@@ -9,6 +9,7 @@
 ?>
 
 
+
     <?php draft_post_thumbnail(); ?>
 
     <div class="entry-content">
