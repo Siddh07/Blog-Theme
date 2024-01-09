@@ -222,17 +222,12 @@ function track_post_views() {
         update_post_views($post->ID);
     }
 }
-add_action('wp_head', 'track_post_views');
-
+add_action('wp_footer', 'track_post_views');
 /**
  * Enqueue custom stylesheet for post navigation.
  *
  * This function enqueues a custom stylesheet for post navigation with the 'custom-styles' handle.
  */
-function enqueue_custom_styles() {
-    wp_enqueue_style('custom-styles', get_template_directory_uri() . '/custom-styles.css');
-}
-add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 
 /**
  * Register Footer Menu.
