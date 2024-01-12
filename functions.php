@@ -137,6 +137,18 @@ add_action( 'widgets_init', 'draft_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
+ wp_enqueue_style(       
+	'ubuntu-font',  
+	'<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">',  
+	array(),        
+	false
+);
+
+
+
 function draft_scripts() {
 	wp_enqueue_style( 'draft-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'draft-style', 'rtl', 'replace' );
