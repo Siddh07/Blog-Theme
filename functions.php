@@ -44,7 +44,18 @@ function draft_setup() {
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
+	
+// Add Featured Image support
+add_theme_support( 'post-thumbnails' );
+
+// Add image sizes
+
+add_image_size( 'dosth-blog-thumbnail', 260, 175, array('center', 'top' ) );
+
+
+
+
+
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
@@ -279,3 +290,9 @@ function nd_dosth_register_sidebars() {
 }
 add_action( 'widgets_init', 'nd_dosth_register_sidebars' );
 
+/*
+ * Custom Excerpt Length
+ */  function excerpt( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'excerpt', PHP_INT_MAX );

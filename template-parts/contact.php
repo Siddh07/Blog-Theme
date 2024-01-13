@@ -1,5 +1,7 @@
 <?php
 /*
-Template Name: Custom Contact Page
+Template Name: Custom Article Page
 */
 ?>
+
+
