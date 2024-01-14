@@ -1049,7 +1049,7 @@ textarea {
 
 
 *-------------------------------------------------------------------------------
-  Archive Styling
+  Index post Styling
 -------------------------------------------------------------------------------*/
 .blog .page-title, .archive .page-title{
     background-color:transparent;
@@ -1102,4 +1102,24 @@ textarea {
 .read-more-link:hover, .posted-in a:hover{
     color:black;
     border-bottom-color:#333;
+}
+
+
+
+/*-------------------------------------------------------------------------------
+  14.Pagination Styling
+-------------------------------------------------------------------------------*/
+.pagination{
+    width:100%;
+}
+.pagination .nav-links a, .pagination .nav-links .current{
+    background-color:#fdb813;
+    padding:7px 12px;
+    color:white;
+    border-radius:4px;
+    text-transform: uppercase;
+    font-weight:bold;
+}
+.pagination .nav-links .current{
+    background-color:#b1b1b1;
 }

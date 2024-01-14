@@ -290,9 +290,17 @@ function nd_dosth_register_sidebars() {
 }
 add_action( 'widgets_init', 'nd_dosth_register_sidebars' );
 
+
+
+
 /*
  * Custom Excerpt Length
- */  function excerpt( $length ) {
-	return 20;
+ */  
+
+ function custom_excerpt($limit) {
+	return wp_trim_words(get_the_excerpt(), $limit, '...');
+ }
+ function custom_excerpt_length( $length ) {
+   return 20;
 }
-add_filter( 'excerpt_length', 'excerpt', PHP_INT_MAX );
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

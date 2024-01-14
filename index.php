@@ -1,4 +1,14 @@
 <?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package draft
+ */
+
+
+
 get_header();
 ?>
 <div class="container">
@@ -15,7 +25,8 @@ get_header();
                             <a href="<?php the_permalink(); ?>"><img src="<?php echo $featured_image[0]; ?>" alt='' /></a>
                         </div>
                     <?php endif; ?>
-                    <?php echo excerpt(20); ?>
+                    <?php echo custom_excerpt(20); // Display 20 words of the excerpt ?>
+                    
                     <a class="read-more-link" href="<?php the_permalink(); ?>"><?php _e( 'Read More' ); ?></a>
                     <div class="posted-in">
                         <span><?php _e( 'Posted In', 'nd_dosth' ); ?></span>
@@ -23,6 +34,7 @@ get_header();
                     </div>
                 </div>
             <?php endwhile; ?>
+            <?php the_posts_pagination(); ?>
         <?php else: ?>
             <p><?php _e( 'No Blog Posts found', 'nd_dosth' ); ?></p>
         <?php endif; ?>
