@@ -267,31 +267,45 @@ add_action('init', 'register_footer_menu');
  *
  * This function registers two widget areas for the footer section, 'Footer Section One' and 'Footer Section Two'.
  */
+
+/**
+ * Register widget area.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+ */
 function nd_dosth_register_sidebars() {
+	
     register_sidebar( array(
         'name'          => esc_html__( 'Footer Section One', 'nd_dosth' ),
         'id'            => 'footer-section-one',
         'description'   => esc_html__( 'Widgets added here would appear inside the first section of the footer', 'nd_dosth' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
+    ) );
+        
+    register_sidebar( array(
+		'name'          => esc_html__( 'Footer Section Two', 'nd_dosth' ),
+		'id'            => 'footer-section-two',
+		'description'   => esc_html__( 'Widgets added here would appear inside the second section of the footer', 'nd_dosth' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+    ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Blog', 'nd_dosth' ),
+        'id'            => 'blog',
+        'description'   => esc_html__( 'Widgets added here would appear inside the all the blog pages', 'nd_dosth' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
     ) );
 
-    register_sidebar( array(
-        'name'          => esc_html__( 'Footer Section Two', 'nd_dosth' ),
-        'id'            => 'footer-section-two',
-        'description'   => esc_html__( 'Widgets added here would appear inside the second section of the footer', 'nd_dosth' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
 }
 add_action( 'widgets_init', 'nd_dosth_register_sidebars' );
-
-
-
 
 /*
  * Custom Excerpt Length

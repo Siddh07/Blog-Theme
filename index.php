@@ -32,22 +32,25 @@ get_header();
                         <span><?php _e( 'Posted In', 'nd_dosth' ); ?></span>
                         <span><?php the_category( ', ' ); ?></span>
                     </div>
+                
+                  
                 </div>
             <?php endwhile; ?>
+   
             <?php the_posts_pagination(); ?>
         <?php else: ?>
             <p><?php _e( 'No Blog Posts found', 'nd_dosth' ); ?></p>
         <?php endif; ?>
+     
         </div>
         <div id="blog-sidebar" class="col-md-4">
-            
-        </div>
+   <?php dynamic_sidebar( 'blog' ); ?>
+</div>
+
     </div>
 </div>
 
-<?php
-get_sidebar();
-?>
+
 
 
 

@@ -797,6 +797,7 @@ textarea {
 --------------------------------------------- */
 .widget {
 	margin: 0 0 1.5em;
+	padding-top: 10px;
 }
 
 .widget select {
@@ -900,14 +901,18 @@ textarea {
 /* Hide the Posts Navigation and the Footer when Infinite Scroll is in use. */
 /* Hide certain elements during infinite scroll */
 /* footer.css */
+
 #custom-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 	border-top: 2px solid black;
 	background-color: violet;
 	color: #fff;
-	padding: 20px 0;
-/* margin-top: 1500px; */
-	text-align: center;
-  }
+ }
+ 
+
+
   
   #custom-footer a {
 	color: #fdb100;
@@ -920,6 +925,7 @@ textarea {
   }
   
   #newsletter-form h4 {
+	padding-top: 10px;
 	color: #fff;
   }
   
