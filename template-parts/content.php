@@ -14,6 +14,8 @@
 
     <div class="entry-content">
         <?php
+
+        
         if (is_singular()) :
             the_content(); // Display the full content of the post
         else :
@@ -29,7 +31,3 @@
         ?>
     </div>
 
-    <footer class="entry-footer">
-        <?php draft_entry_footer(); ?>
-    </footer>
-</article>

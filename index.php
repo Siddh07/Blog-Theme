@@ -43,9 +43,7 @@ get_header();
         <?php endif; ?>
      
         </div>
-        <div id="blog-sidebar" class="col-md-4">
-   <?php dynamic_sidebar( 'blog' ); ?>
-</div>
+       
 
     </div>
 </div>
