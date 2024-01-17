@@ -1161,7 +1161,15 @@ textarea {
     margin-bottom:10px;
     display:inline-block;
     border-bottom:1px solid transparent;
+
 }
+
+.posted-in ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .posted-in{
     font-size:12px;
 }
@@ -1199,126 +1207,114 @@ textarea {
 Comment Section Styling
 -------------------------------------------------------------------------------*/
 #respond h3, .comments-title{
-	color:black;
-	padding:20px;
-	font-size:20px;
-	border-top:1px solid #000;
-	border-bottom:1px solid #000;
-	margin:30px 0;
+    color:black;
+    padding:20px;
+    font-size:20px;
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+    margin:30px 0;
 }
-
 #commentform .comment-notes{
-	margin-bottom:20px;
+    margin-bottom:20px;
 }
 #commentform label{
-	display:block;
+    display:block;
 }
 #commentform input[type="text"],
 #commentform input[type="url"],
 #commentform input[type="email"],
 #commentform textarea{
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	margin-bottom: 20px;
-	width: 100%;
-	background-color: #f8f8f8;
-	padding: 7px 10px;
-	font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 7px 10px;
+    font-size: 18px;
 }
-
 #commentform input[type="submit"]{
-	line-height: 38px;
+    line-height: 38px;
     border-radius: 4px;
     padding: 0 20px;
     background-color: #fdb813;
     color: black;
     font-weight: bold;
     font-size: 16px;
-	border:0;
-	position: relative;
-	transition:all 0.4s;
-	cursor:pointer;
+    border:0;
+    position: relative;
+    transition:all 0.4s;
+    cursor:pointer;
 }
-
 #commentform input[type="submit"]:hover{
-	background-color: #6e551a;
+    background-color: #6e551a;
     color: white;
 }
 .comment-body .comment-author{
-	float:left;
-	width:30%;
+    float:left;
+    width:30%;
 }
 .comment-body .comment-author .fn{
-	display:block;
-	margin-top:10px;
+    display:block;
+    margin-top:10px;
 }
 .comment-body{
-	overflow:hidden;
-	margin-bottom:30px;
+    overflow:hidden;
+    margin-bottom:30px;
 }
 .comment{
-	margin-bottom:30px;
+    margin-bottom:30px;
 }
 .comment-list, .children{
-	margin:0;
-	padding:0;
-	list-style-type: none;
+    margin:0;
+    padding:0;
+    list-style-type: none;
 }
 .comment-list > li:first-child{
-	border-top:0;
-	padding-top:0;
+    border-top:0;
+    padding-top:0;
 }
 .comment{
-	border-top:1px solid #ccc;
-	padding-top:30px;
-	position:relative;
+    border-top:1px solid #ccc;
+    padding-top:30px;
+    position:relative;
 }
 .children .comment{
-	border-top:0;
+    border-top:0;
 }
 .comment .children{
-	border-top:1px dotted #5e666b;
-	border-left:1px dotted #5e666b;
-	padding-top:10px;
-	padding-left:10px;
+    border-top:1px dotted #5e666b;
+    border-left:1px dotted #5e666b;
+    padding-top:10px;
+    padding-left:10px;
 }
 .children{
-	margin-left:100px;
+    margin-left:100px;
 }
 .children img{
-	max-width:75px;
-	height:auto;
+    max-width:75px;
+    height:auto;
 }
 .children .fn{
-	font-size:12px;
+    font-size:12px;
 }
 .says{
-	display:none;
+    display:none;
 }
 .comment-metadata{
-	margin-left:30%;		
+    margin-left:30%;        
 }
 .comment-metadata a{
-	color:#5e666b;
-	font-size:14px;
-	margin-bottom:10px;
-	display:block;
+    color:#5e666b;
+    font-size:14px;
+    margin-bottom:10px;
+    display:block;
 }
 .comment-reply-link{
-	position:absolute;
-	top:15px;
-	right:0;
-	font-size:12px;
-	color:#1a3794;
-}
-#respond #reply-title{
-	margin-top:0;
-}
-
-.single #actual-article{
-	/* Issue fix */
-	padding-left:15px;
-	padding-right:15px;
+    position:absolute;
+    top:15px;
+    right:0;
+    font-size:12px;
+    color:#1a3794;
 }
 
 
@@ -1445,3 +1441,51 @@ Comment Section Styling
 
 
 
+/*-------------------------------------------------------------------------------
+  16.Single Blog Post page styling
+-------------------------------------------------------------------------------*/
+.single .full-width-featured-image{
+    min-height:500px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center center;
+    position:relative;
+}
+.single .full-width-featured-image h1{
+    color:white;
+    position:relative;
+    z-index:2;
+    font-size:50px;
+    text-align:center;
+    max-width:1000px;
+    margin:0 auto;
+}
+.single .full-width-featured-image:after{
+    width:100%;
+    height:100%;
+    content:"";
+    background-color:rgba(0,0,0,0.8);
+    position:absolute;
+    top:0;
+    left:0;
+}
+.single .article-info h4{
+    color:#bfbfbf;
+    font-size:20px;
+    text-transform:lowercase;
+    margin-bottom:10px;
+    margin-top:30px;
+}
+.single .article-info a{
+    font-size:16px;
+    color:#1a3794;
+}
+.single #actual-article{
+    padding:30px 0;
+}
+.single #actual-article p{
+    font-size:16px;
+}
