@@ -318,3 +318,24 @@ add_action( 'widgets_init', 'nd_dosth_register_sidebars' );
    return 20;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
+
+/*
+ * Outputs the post's thumbnail and title when ID of the post is provided
+ */
+function draft_output_post_thumb_and_title( $post_id ){ ?>
+    <div class="post-info">
+        <?php // Output Post's Thumbnail ?>
+        <?php $page_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'thumbnail' ); ?>
+        <?php if( ! empty( $page_thumb[0] ) ) : ?>
+            <a href="<?php echo get_the_permalink( $post_id ); ?>" class="post-thumb">
+                <img src="<?php echo $page_thumb[0]; ?>" />
+            </a>
+        <?php endif; ?>
+        <?php // Output Previous page Title ?>
+        <a class="post-title" href="<?php echo get_the_permalink( $post_id ); ?>">
+            <?php echo get_the_title( $post_id ); ?>
+        </a>
+    </div>    
+<?php }

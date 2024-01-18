@@ -1489,3 +1489,67 @@ Comment Section Styling
 .single #actual-article p{
     font-size:16px;
 }
+
+
+
+#respond #reply-title{
+    margin-top:0;
+}
+.single #actual-article{
+    /* Issue fix */
+    padding-left:15px;
+    padding-right:15px;
+}
+/*-------------------------------------------------------------------------------
+  18.Post Navigation Styling
+-------------------------------------------------------------------------------*/
+.next-previous-articles{
+    overflow: hidden;
+    border-top:1px solid #000;
+    margin-top:40px;
+}
+.next-previous-articles > div{
+    width:50%;
+    float:left;
+    padding-top:15px;
+    padding-bottom:25px;
+}
+.previous-article, .next-article{
+    display:block;
+    font-size:20px;
+}
+.previous-article{
+    color: #fdb813;
+}
+.next-article{
+    color: #1a3794;
+}
+.previous-article{
+    padding-right:15px;
+    border-right:1px solid #ccc;
+}
+.next-article{
+    padding-left:15px;
+}
+.next-previous-articles a{
+    display:block;
+}
+.next-previous-articles .post-thumb{
+    width:75px;
+    float:left;
+}
+.next-previous-articles .post-title{
+    font-size:16px;
+    margin-left:95px;
+    margin-top:15px;
+    color:black;
+}
+@media only screen and (max-width:767px){
+    .next-previous-articles > div{
+        width:100%;
+    }
+    .previous-article{
+        padding-left:15px;
+        border-right:0;
+    }
+}

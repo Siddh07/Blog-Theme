@@ -46,6 +46,9 @@ get_header();
                     <div class="entry-content">
                 <?php the_excerpt(); ?>
             </div>
+
+            <?php get_template_part( 'template-parts/post', 'navigation' ); ?>
+
             <?php comments_template(); ?>
 
                 </div>
