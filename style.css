@@ -1553,3 +1553,37 @@ Comment Section Styling
         border-right:0;
     }
 }
+
+/*-------------------------------------------------------------------------------
+ Homepage Blog List styling
+-------------------------------------------------------------------------------*/
+.home .blog-posts h2{
+    width:100%;
+    text-align:center;
+}
+.home .blog-posts{
+    max-width:1000px;
+    margin:50px auto;
+}
+.home .blog-posts .blog-post h2{
+    text-align:left;
+}
+@media only screen and (min-width: 767px){
+    .home .blog-posts .blog-post {
+        width: 33%;
+    }
+}
+
+
+/*-------------------------------------------------------------------------------
+ Related Blog List styling
+-------------------------------------------------------------------------------*/
+.single .related-articles .blog-post{
+    width:100%;
+}
+.single .related-articles h2{
+    font-size:25px;
+    margin-bottom:15px;
+    margin-top:30px;
+    color:#1a3794;
+}
