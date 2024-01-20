@@ -70,12 +70,13 @@ get_header();
                <a href="<?php the_permalink(); ?>"><img src="<?php echo $featured_image[0]; ?>" alt='' /></a>
            </div>
        <?php endif; ?>
+       <div class="posted-in">
+           <span><?php _e( 'Posted In', 'nd_dosth' ); ?></span>
+       </div>
        <?php the_title('<h1>', '</h1>'); ?>
        <?php echo custom_excerpt(20); // Display 20 words of the excerpt ?>
        <a class="read-more-link" href="<?php the_permalink(); ?>"><?php _e( 'Read More' ); ?></a>
-       <div class="posted-in">
-           <span><?php _e( 'Posted In', 'nd_dosth' ); ?></span>
-
+      
         <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>
     </section>

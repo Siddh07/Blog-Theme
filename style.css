@@ -1587,3 +1587,57 @@ Comment Section Styling
     margin-top:30px;
     color:#1a3794;
 }
+
+
+
+/*-------------------------------------------------------------------------------
+Reviews Slider Styling
+-------------------------------------------------------------------------------*/
+.reviews-container{
+    padding:15px;
+    text-align: center; 
+}
+.reviews-container .review{
+    margin-bottom:50px;
+}
+.draft-reviews blockquote{
+    font-weight: normal;
+}
+.draft-reviews blockquote p{
+    color:#fdb100;
+    font-size:26px;
+    font-family:"Georgia", serif;
+    font-style:italic;
+    max-width:700px;
+    margin:0 auto;
+}
+.draft-reviews blockquote p:before{
+    content:'“';
+}
+.draft-reviews blockquote p:after{
+    content:'”';
+}
+.draft-reviews cite{
+    font-style: normal;
+    font-weight:bold;
+}
+.draft-reviews footer{
+    color:#999;
+    margin-top:15px;
+}
+.slick-dots li{
+    display:inline-block;
+    text-indent:-9999px;
+    width:10px;
+    height:10px;
+    background-color:#ccc;
+    margin:0 5px;
+    border-radius:100%;
+    cursor:pointer;
+}
+.slick-dots{
+    margin-bottom:50px;
+}
+.slick-dots li.slick-active{
+    background-color:#fdb100;
+}

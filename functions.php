@@ -273,12 +273,12 @@ add_action('init', 'register_footer_menu');
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-function nd_dosth_register_sidebars() {
+function draft_register_sidebars() {
 	
     register_sidebar( array(
-        'name'          => esc_html__( 'Footer Section One', 'nd_dosth' ),
+        'name'          => esc_html__( 'Footer Section One', 'draft' ),
         'id'            => 'footer-section-one',
-        'description'   => esc_html__( 'Widgets added here would appear inside the first section of the footer', 'nd_dosth' ),
+        'description'   => esc_html__( 'Widgets added here would appear inside the first section of the footer', 'draft' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h4 class="widget-title">',
@@ -286,18 +286,18 @@ function nd_dosth_register_sidebars() {
     ) );
         
     register_sidebar( array(
-		'name'          => esc_html__( 'Footer Section Two', 'nd_dosth' ),
+		'name'          => esc_html__( 'Footer Section Two', 'draft' ),
 		'id'            => 'footer-section-two',
-		'description'   => esc_html__( 'Widgets added here would appear inside the second section of the footer', 'nd_dosth' ),
+		'description'   => esc_html__( 'Widgets added here would appear inside the second section of the footer', 'draft' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
     ) );
     register_sidebar( array(
-        'name'          => esc_html__( 'Blog', 'nd_dosth' ),
+        'name'          => esc_html__( 'Blog', 'draft' ),
         'id'            => 'blog',
-        'description'   => esc_html__( 'Widgets added here would appear inside the all the blog pages', 'nd_dosth' ),
+        'description'   => esc_html__( 'Widgets added here would appear inside the all the blog pages', 'draft' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h4 class="widget-title">',
@@ -305,7 +305,7 @@ function nd_dosth_register_sidebars() {
     ) );
 
 }
-add_action( 'widgets_init', 'nd_dosth_register_sidebars' );
+add_action( 'widgets_init', 'draft_register_sidebars' );
 
 /*
  * Custom Excerpt Length
@@ -339,3 +339,129 @@ function draft_output_post_thumb_and_title( $post_id ){ ?>
         </a>
     </div>    
 <?php }
+
+
+
+/**
+ * Register Custom Post Types.
+ *
+ * @link https://codex.wordpress.org/Function_Reference/register_post_type
+ */
+function draft_register_custom_post_types(){
+    //Register Reviews Post Type
+    register_post_type( 'draft_reviews',
+        array(
+            'labels'  => array(
+                'name'           => __( 'Reviews', 'draft' ),
+                'singular_name'  => __( 'Review', 'draft' ),
+                'add_new'        => __( 'Add Review', 'draft' ),
+                'add_new_item'   => __( 'Add New Review', 'draft' ),
+                'edit_item'      => __( 'Edit Review', 'draft' ),
+                'all_items'      => __( 'All Reviews', 'draft' ),
+                'not_found'      => __( 'No Reviews Found', 'draft' ),
+            ),
+            'menu_icon'             => 'dashicons-format-quote',
+            'public'                => true,
+            'exclude_from_search'   => true,
+            'has_archive'           => true,
+            'hierarchical'          => false,
+            'show_in_rest'          => true,
+            'rewrite'               => array( 'slug' => 'reviews' ),
+            'supports'              => array( 'title', 'editor', 'custom-fields', 'thumbnail', 'excerpt', 'revisions', 'page-attributes' ),
+            'taxonomies'            => array( 'category', 'post_tag' )
+        )
+    );
+}
+ 
+add_action('init', 'draft_register_custom_post_types');
+
+function draft_enqueue_styles() {
+    wp_enqueue_style(       
+        'normalize',    
+        get_stylesheet_directory_uri() . '/assets/css/normalize.css',   
+        array(),        
+        false,      
+        'all' 
+    );
+    wp_enqueue_style(       
+        'bootstrap',    
+        get_stylesheet_directory_uri() . '/assets/css/bootstrap.min.css',   
+        array(),        
+        false,      
+        'all' 
+    );
+    wp_enqueue_style(       
+        'superfish',    
+        get_stylesheet_directory_uri() . '/assets/css/superfish.css',   
+        array(),        
+        false,      
+        'all' 
+    );
+    wp_enqueue_style(       
+        'slick',    
+        get_stylesheet_directory_uri() . '/assets/css/slick.css',   
+        array(),        
+        false,      
+        'all' 
+    );
+    wp_enqueue_style(       
+        'ubuntu-font',  
+        'https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700',  
+        array(),        
+        false
+    );
+    wp_enqueue_style(       
+        'main-stylesheet',  
+        get_stylesheet_uri(),   
+        array('normalize', 'bootstrap'),        
+        "8.0",      
+        'all' 
+    );
+}
+add_action( 'wp_enqueue_scripts', 'draft_enqueue_styles' );
+
+
+
+function draft_enqueue_scripts() {
+    wp_enqueue_script( 
+        'modernizr', 
+        get_stylesheet_directory_uri() . '/assets/js/modernizr.min.js', 
+        array(), 
+        '1.0.0', 
+        true 
+    );
+    wp_enqueue_script( 
+        'superfish', 
+        get_stylesheet_directory_uri() . '/assets/js/superfish.min.js', 
+        array('jquery'), 
+        '1.0.0', 
+        true 
+    );
+    wp_enqueue_script( 
+        'fitvids', 
+        get_stylesheet_directory_uri() . '/assets/js/jquery.fitvids.js', 
+        array('jquery'), 
+        '1.0.0', 
+        true 
+    );
+    wp_enqueue_script( 
+        'slick', 
+        get_stylesheet_directory_uri() . '/assets/js/slick.min.js', 
+        array('jquery'), 
+        '1.0.0', 
+        true 
+    );
+    wp_enqueue_script( 
+        'main-js', 
+        get_stylesheet_directory_uri() . '/assets/js/main.js', 
+        array('jquery'), 
+        '1.0.0', 
+        true 
+    );
+    $translation_array = array(
+        "email_placeholder" => esc_attr__( 'Enter your email address here', 'draft' ),
+        'ajax_url' => admin_url('admin-ajax.php'),
+    );
+    wp_localize_script( 'main-js', 'translated_text_object', $translation_array );  
+}
+add_action( 'wp_enqueue_scripts', 'draft_enqueue_scripts' );
