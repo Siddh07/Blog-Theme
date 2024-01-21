@@ -20,7 +20,8 @@
                         <footer>
                             <cite><?php the_title(); ?></cite>
                             <span class="review-from">
-                                <?php printf( __( 'From %s', 'draft' ), get_field('source') ); ?>
+                                <?php $terms = get_the_terms( get_the_ID() , 'draft_review_source' ); ?>
+                                <?php printf( __( 'From %s', 'draft' ), $terms[0]->name ); ?>
                             </span>
                         </footer>
                     </blockquote>

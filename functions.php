@@ -362,7 +362,7 @@ function draft_register_custom_post_types(){
             ),
             'menu_icon'             => 'dashicons-format-quote',
             'public'                => true,
-            'exclude_from_search'   => true,
+            'exclude_from_search'   => false,
             'has_archive'           => true,
             'hierarchical'          => false,
             'show_in_rest'          => true,
@@ -465,3 +465,50 @@ function draft_enqueue_scripts() {
     wp_localize_script( 'main-js', 'translated_text_object', $translation_array );  
 }
 add_action( 'wp_enqueue_scripts', 'draft_enqueue_scripts' );
+
+
+
+
+
+
+/**
+ * Remove default words from archive titles like "Category:", "Tag:", "Archives:"
+ */
+function draft_remove_default_archive_words($title) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>' ;
+    }
+    return $title;
+}
+add_filter( 'get_the_archive_title', 'draft_remove_default_archive_words');
+
+
+
+function draft_register_custom_taxonomies(){
+   // Add new taxonomy, make it hierarchical (like categories)
+    $labels = array(
+        'name'              => _x( 'Review Sources', 'taxonomy general name', 'draft' ),
+        'singular_name'     => _x( 'Review Source', 'taxonomy singular name', 'draft' ),
+        'search_items'      => __( 'Search Review Sources', 'draft' ),
+        'all_items'         => __( 'All Review Sources', 'draft' ),
+        'edit_item'         => __( 'Edit Review Source', 'draft' ),
+        'update_item'       => __( 'Update Review Source', 'draft' ),
+        'add_new_item'      => __( 'Add New Source', 'draft' ),
+        'not_found'         => __( 'No Review Sources Found!', 'draft' ),
+    );
+    $args = array(
+        'hierarchical'      => true, // Like Category Taxonomy. False is like Tag taxonomy.
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'has_archive'       => true,
+        'rewrite'           => array('slug' => 'review-source')
+    );
+    register_taxonomy( 'draft_review_source', array( 'draft_reviews' ), $args ); 
+}
+add_action('init', 'draft_register_custom_taxonomies');
