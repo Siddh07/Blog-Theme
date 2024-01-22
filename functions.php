@@ -347,33 +347,33 @@ function draft_output_post_thumb_and_title( $post_id ){ ?>
  *
  * @link https://codex.wordpress.org/Function_Reference/register_post_type
  */
-function draft_register_custom_post_types(){
-    //Register Reviews Post Type
-    register_post_type( 'draft_reviews',
-        array(
-            'labels'  => array(
-                'name'           => __( 'Reviews', 'draft' ),
-                'singular_name'  => __( 'Review', 'draft' ),
-                'add_new'        => __( 'Add Review', 'draft' ),
-                'add_new_item'   => __( 'Add New Review', 'draft' ),
-                'edit_item'      => __( 'Edit Review', 'draft' ),
-                'all_items'      => __( 'All Reviews', 'draft' ),
-                'not_found'      => __( 'No Reviews Found', 'draft' ),
-            ),
-            'menu_icon'             => 'dashicons-format-quote',
-            'public'                => true,
-            'exclude_from_search'   => false,
-            'has_archive'           => true,
-            'hierarchical'          => false,
-            'show_in_rest'          => true,
-            'rewrite'               => array( 'slug' => 'reviews' ),
-            'supports'              => array( 'title', 'editor', 'custom-fields', 'thumbnail', 'excerpt', 'revisions', 'page-attributes' ),
-            'taxonomies'            => array( 'category', 'post_tag' )
-        )
-    );
-}
+// function draft_register_custom_post_types(){
+//     //Register Reviews Post Type
+//     register_post_type( 'draft_reviews',
+//         array(
+//             'labels'  => array(
+//                 'name'           => __( 'Reviews', 'draft' ),
+//                 'singular_name'  => __( 'Review', 'draft' ),
+//                 'add_new'        => __( 'Add Review', 'draft' ),
+//                 'add_new_item'   => __( 'Add New Review', 'draft' ),
+//                 'edit_item'      => __( 'Edit Review', 'draft' ),
+//                 'all_items'      => __( 'All Reviews', 'draft' ),
+//                 'not_found'      => __( 'No Reviews Found', 'draft' ),
+//             ),
+//             'menu_icon'             => 'dashicons-format-quote',
+//             'public'                => true,
+//             'exclude_from_search'   => false,
+//             'has_archive'           => true,
+//             'hierarchical'          => false,
+//             'show_in_rest'          => true,
+//             'rewrite'               => array( 'slug' => 'reviews' ),
+//             'supports'              => array( 'title', 'editor', 'custom-fields', 'thumbnail', 'excerpt', 'revisions', 'page-attributes' ),
+//             'taxonomies'            => array( 'category', 'post_tag' )
+//         )
+//     );
+// }
  
-add_action('init', 'draft_register_custom_post_types');
+// add_action('init', 'draft_register_custom_post_types');
 
 function draft_enqueue_styles() {
     wp_enqueue_style(       
@@ -488,27 +488,27 @@ add_filter( 'get_the_archive_title', 'draft_remove_default_archive_words');
 
 
 
-function draft_register_custom_taxonomies(){
-   // Add new taxonomy, make it hierarchical (like categories)
-    $labels = array(
-        'name'              => _x( 'Review Sources', 'taxonomy general name', 'draft' ),
-        'singular_name'     => _x( 'Review Source', 'taxonomy singular name', 'draft' ),
-        'search_items'      => __( 'Search Review Sources', 'draft' ),
-        'all_items'         => __( 'All Review Sources', 'draft' ),
-        'edit_item'         => __( 'Edit Review Source', 'draft' ),
-        'update_item'       => __( 'Update Review Source', 'draft' ),
-        'add_new_item'      => __( 'Add New Source', 'draft' ),
-        'not_found'         => __( 'No Review Sources Found!', 'draft' ),
-    );
-    $args = array(
-        'hierarchical'      => true, // Like Category Taxonomy. False is like Tag taxonomy.
-        'labels'            => $labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-        'has_archive'       => true,
-        'rewrite'           => array('slug' => 'review-source')
-    );
-    register_taxonomy( 'draft_review_source', array( 'draft_reviews' ), $args ); 
-}
-add_action('init', 'draft_register_custom_taxonomies');
+// function draft_register_custom_taxonomies(){
+//    // Add new taxonomy, make it hierarchical (like categories)
+//     $labels = array(
+//         'name'              => _x( 'Review Sources', 'taxonomy general name', 'draft' ),
+//         'singular_name'     => _x( 'Review Source', 'taxonomy singular name', 'draft' ),
+//         'search_items'      => __( 'Search Review Sources', 'draft' ),
+//         'all_items'         => __( 'All Review Sources', 'draft' ),
+//         'edit_item'         => __( 'Edit Review Source', 'draft' ),
+//         'update_item'       => __( 'Update Review Source', 'draft' ),
+//         'add_new_item'      => __( 'Add New Source', 'draft' ),
+//         'not_found'         => __( 'No Review Sources Found!', 'draft' ),
+//     );
+//     $args = array(
+//         'hierarchical'      => true, // Like Category Taxonomy. False is like Tag taxonomy.
+//         'labels'            => $labels,
+//         'show_ui'           => true,
+//         'show_admin_column' => true,
+//         'show_in_rest'      => true,
+//         'has_archive'       => true,
+//         'rewrite'           => array('slug' => 'review-source')
+//     );
+//     register_taxonomy( 'draft_review_source', array( 'draft_reviews' ), $args ); 
+// }
+// add_action('init', 'draft_register_custom_taxonomies');

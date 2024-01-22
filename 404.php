@@ -10,51 +10,25 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'draft' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'draft' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'draft' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$draft_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'draft' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$draft_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
-<?php
-get_footer();
+<div class="content-container">
+    <h1 class="page-title"><?php _e( 'OOPS! You took a wrong turn :(', "draft" ); ?></h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="big-404-page">
+                    <?php _e( '404', "draft" ); ?>
+                </div>
+                <p><?php _e( "But that's totally ok, Can't blame yourself.", 'draft' ); ?></p>
+                <p><?php _e( "Anyway, the page you are looking for doesn't exist any more or might never existed.", 'draft' ); ?></p>
+                <div class="menu-button">
+                    <a href="<?php echo esc_url( 'index.php/articles/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+                        <?php _e( 'Go Home', 'draft' ); ?>
+                    </a>
+                </div>
+                <div class="or"><?php _e( 'or', 'draft' ); ?></div>
+                <?php get_search_form(); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php get_footer(); ?>

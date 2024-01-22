@@ -10,44 +10,33 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<div class="content-container">
+<h1 class="page-title"><?php _e( 'Search results for:', 'nd_dosth' ); ?></h1>
+<div class="search-query"><?php echo get_search_query(); ?></div>    
+<div class="container">
+	<div class="row">
+		<div class="search-results col-md-8">
+		<?php if ( have_posts() ): ?>
+			<?php while( have_posts() ): ?>
+				<?php the_post(); ?>
+				<div class="search-result">
+					<h2><?php the_title(); ?></h2>
+					<?php the_excerpt(); ?>
+					<a href="<?php the_permalink(); ?>" class="read-more-link">
+						<?php _e( 'Read More', 'nd_dosth' );  ?>
+					</a>
+				</div>
+			<?php endwhile; ?>
+			<?php the_posts_pagination(); ?>
+		<?php else: ?>
+			<p><?php _e( 'No Search Results found', 'nd_dosth' ); ?></p>
+		<?php endif; ?>
+		</div>
+		<div id="blog-sidebar" class="col-md-4">
+			<?php get_sidebar(); ?>             
+		</div>
+	</div>
+</div>
+</div>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'draft' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>
