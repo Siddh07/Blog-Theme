@@ -72,9 +72,12 @@ $blog_posts_query = new WP_Query(
 <?php else: ?>
    <p><?php _e( 'No Blog Posts found', 'nd_dosth' ); ?></p>
 <?php endif; ?>
+
 </div>
+<div id="blog-sidebar" class="col-md-4">
+                <?php get_sidebar(); ?>             
+            </div>
 </div>
 </div>
 <?php get_template_part( 'template-parts/reviews', 'slider' ); ?>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

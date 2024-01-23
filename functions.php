@@ -512,3 +512,4 @@ add_filter( 'get_the_archive_title', 'draft_remove_default_archive_words');
 //     register_taxonomy( 'draft_review_source', array( 'draft_reviews' ), $args ); 
 // }
 // add_action('init', 'draft_register_custom_taxonomies');
+

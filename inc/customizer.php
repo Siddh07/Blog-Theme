@@ -30,6 +30,42 @@ function draft_customize_register( $wp_customize ) {
 				'render_callback' => 'draft_customize_partial_blogdescription',
 			)
 		);
+		// Theme Options Panel
+$wp_customize->add_panel( 'draft_theme_options', 
+array(
+	//'priority'       => 100,
+	'title'            => __( 'Theme Options', 'draft' ),
+	'description'      => __( 'Theme Modifications like color scheme, theme texts and layout preferences can be done here', 'draft' ),
+) 
+);
+	
+	// Text Options Section Inside Theme
+$wp_customize->add_section( 'draft_text_options', 
+array(
+	'title'         => __( 'Text Options', 'draft' ),
+	'priority'      => 1,
+	'panel'         => 'draft_theme_options'
+) 
+);
+// Setting for Copyright text.
+$wp_customize->add_setting( 'draft_copyright_text',
+    array(
+        'default'           => __( 'All rights reserved ', 'draft' ),
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    )
+);
+// Control for Copyright text
+$wp_customize->add_control( 'draft_copyright_text', 
+    array(
+        'type'        => 'text',
+        'priority'    => 10,
+        'section'     => 'draft_text_options',
+        'label'       => 'Copyright text',
+        'description' => 'Text put here will be outputted in the footer',
+    ) 
+);
+
 	}
 }
 add_action( 'customize_register', 'draft_customize_register' );
