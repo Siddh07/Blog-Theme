@@ -902,90 +902,66 @@ textarea {
 /* Hide certain elements during infinite scroll */
 
 
+/* Footer Styles */
+#site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
 
+.footer-section-one,
+.footer-section-two {
+    margin-bottom: 20px;
+}
 
-/*-------------------------------------------------------------------------------
-  Footer Styles
--------------------------------------------------------------------------------*/
-#site-footer .widget{
-	margin-bottom:65px;
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
-#site-footer .widget:last-child{
-	margin-bottom:0;
+
+.copyright-and-menu {
+    display: flex;
+    justify-content: space-between;
 }
-#site-footer .widget h4{
-	font-size:30px;
-	text-align: center;
-	margin-bottom:30px;
+
+.copyright p {
+    margin: 0;
 }
-.footer-section-one{
-	background-image:url(assets/images/background-pattern.png);
-	padding:65px 15px 70px;
+
+.footer-links {
+    display: flex;
+    justify-content: flex-end;
 }
-.footer-section-one #text-4 a{
-	display: inline-block;
-	margin:0 5px;
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
 }
-.footer-section-one #text-4 .textwidget{
-	text-align:center;
-}
-.footer-section-one .widget_media_image img{
-	max-width:300px;
-	display: block;
-	margin:0 auto;
-}
-.footer-section-two{
-	padding:70px 0;
-}
-#site-footer .elp-widget .es_caption{
-	font-size:20px;
-	color:#939393;
-}
-#site-footer .es_widget_form{
-	text-align: center;
-}
-#site-footer .es_textbox input{
-	width:400px;
-	margin-right:-4px;
-}
-#site-footer .es_textbox, #site-footer .es_button{
-	display:inline-block;
-}
-#site-footer .es_lablebox{
-	position: absolute;
-	left:-9999px;
-}
-#site-footer .es_textbox input, #site-footer .es_button input{
-	height:43px;
-	display: block;
-	border:0;
-	font-size:20px;
-	-moz-appearance:none;
-	-webkit-appearance:none;
-	appearance:none;
-}
-#site-footer .es_textbox input{
-	background-color:#d4d4d4;
-	padding-left:15px;
-	padding-right:15px;
-}
-#site-footer .es_button input{
-	background-color:#fdb100;
-	color:black;
-	position: relative;
-}
-#site-footer .elp-widget h4{
-	margin-bottom:20px;
-}
-#site-footer .elp-widget .es_caption{
-	margin-bottom:20px;
+
+/* Responsive Styling */
+@media (max-width: 767px) {
+    .copyright-and-menu {
+        flex-direction: column;
+    }
+
+    .footer-links {
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+    .footer-links a {
+        margin: 0;
+        margin-bottom: 10px;
+    }
 }
 
 
 
-
-
-  #newsletter-form {
+#newsletter-form {
 	max-width: 400px;
 	margin: 0 auto;
 	margin-bottom: 20px;

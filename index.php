@@ -25,10 +25,18 @@ get_header();
                             </div>
                         <?php endif; ?>
                         <?php echo custom_excerpt(20); // Display 20 words of the excerpt ?>
-                        
-                        <a class="read-more-link" href="<?php the_permalink(); ?>"><?php _e( 'Read More' ); ?></a>
-                        <div class="posted-in">
-                            <span><?php _e( 'Posted In', 'nd_dosth' ); ?></span>
+                       
+                       
+                        <?php if( get_option('draft_show_readmore', true ) ): ?>
+    <a class="read-more-link" href="<?php the_permalink(); ?>">
+        <?php echo get_option( 'draft_readmore_text', __( 'Read More', 'draft' ) ); ?>
+    </a>
+<?php endif; ?>
+                       
+
+
+<div class="posted-in">
+                            <span><?php _e( 'Posted In', 'draft' ); ?></span>
                             <span><?php the_category( ', ' ); ?></span>
                         </div>
                     </div>
@@ -57,9 +65,11 @@ $blog_posts_query = new WP_Query(
        <?php endif; ?>
        <?php the_title('<h1>', '</h1>'); ?>
        <?php echo custom_excerpt(20); // Display 20 words of the excerpt ?>
-       <a class="read-more-link" href="<?php the_permalink(); ?>"><?php _e( 'Read More' ); ?></a>
+       <a class="read-more-link" href="<?php the_permalink(); ?>">
+    <?php echo get_option( 'draft_readmore_text', __( 'Read More', 'draft' ) ); ?>
+</a>
        <div class="posted-in">
-           <span><?php _e( 'Posted In', 'nd_dosth' ); ?></span>
+           <span><?php _e( 'Posted In', 'draft' ); ?></span>
            <span><?php the_category( ', ' ); ?></span>
        </div>
        </div> <!-- Correct placement of closing div tag -->
@@ -70,7 +80,7 @@ $blog_posts_query = new WP_Query(
 
 <?php the_posts_pagination(); ?>
 <?php else: ?>
-   <p><?php _e( 'No Blog Posts found', 'nd_dosth' ); ?></p>
+   <p><?php _e( 'No Blog Posts found', 'draft' ); ?></p>
 <?php endif; ?>
 
 </div>
