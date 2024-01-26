@@ -65,10 +65,14 @@ $blog_posts_query = new WP_Query(
        <?php endif; ?>
        <?php the_title('<h1>', '</h1>'); ?>
        <?php echo custom_excerpt(20); // Display 20 words of the excerpt ?>
+      
+      
        <a class="read-more-link" href="<?php the_permalink(); ?>">
-    <?php echo get_option( 'draft_readmore_text', __( 'Read More', 'draft' ) ); ?>
-</a>
-       <div class="posted-in">
+        <?php echo get_option( 'draft_readmore_text', __( 'Read More', 'draft' ) ); ?>
+    </a>
+
+
+<div class="posted-in">
            <span><?php _e( 'Posted In', 'draft' ); ?></span>
            <span><?php the_category( ', ' ); ?></span>
        </div>
