@@ -513,3 +513,31 @@ add_filter( 'get_the_archive_title', 'draft_remove_default_archive_words');
 // }
 // add_action('init', 'draft_register_custom_taxonomies');
 
+
+function mytheme_enqueue_customizer_preview_script() {
+    wp_enqueue_script(
+        'mytheme-customizer-preview',
+        get_stylesheet_directory_uri() . '/js/customize.js',
+        array( 'customize-preview' ),
+        null,
+        true
+    );
+}
+add_action( 'customize_preview_init', 'mytheme_enqueue_customizer_preview_script' );
+
+
+function mytheme_customize_register($wp_customize) {
+    $wp_customize->add_setting('retina_logo', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport' => 'postMessage',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'retina_logo', array(
+        'label' => __('Retina Logo', 'mytheme'),
+        'section' => 'title_tagline',
+        'settings' => 'retina_logo',
+    )));
+}
+add_action('customize_register', 'mytheme_customize_register');
+

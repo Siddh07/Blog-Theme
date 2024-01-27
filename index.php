@@ -93,5 +93,15 @@ $blog_posts_query = new WP_Query(
             </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 <?php get_template_part( 'template-parts/reviews', 'slider' ); ?>
 <?php get_footer(); ?>

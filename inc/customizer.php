@@ -19,17 +19,11 @@ function draft_customize_register( $wp_customize ) {
     //Enable Live Preview for Default Settings
     $wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 
-    /* Retina Logo */
-    $wp_customize->add_setting( 'tbe_retina_logo', array(
-        'type'                  => 'theme_mod',
-        'capability'            => 'edit_theme_options',
-        //'sanitize_callback'     => 'tbe_sanitize_image_callback',
-    ) );
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'tbe_retina_logo', array(
-            'label' 		   => __('Logo Retina Version','the-basics-of-everything'),
-            'section' 		 => 'title_tagline',
-            'settings'     => 'tbe_retina_logo',
-    ) ) );
+
+  
+
+
+
 
     // Theme Options Panel
     $wp_customize->add_panel( 'draft_theme_options', 

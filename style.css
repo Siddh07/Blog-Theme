@@ -1621,3 +1621,9 @@ Reviews Slider Styling
 .slick-dots li.slick-active{
     background-color:#fdb100;
 }
+
+.site-title{
+	padding-top: 20px;
+	text-align: center;
+
+}
