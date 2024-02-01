@@ -1,3 +1,5 @@
+
+
 <?php
 /**
  * The template for displaying all single posts
@@ -23,15 +25,13 @@ $blog_posts_query = new WP_Query(
 
 <div class="container">
     <div class="row">
-        <div class="blog-posts col-md-8">
+        <div class="blog-posts ">
             <?php if ( $blog_posts_query->have_posts() ) : ?>
                 <?php while ( $blog_posts_query->have_posts() ) : $blog_posts_query->the_post(); ?>
                     <div class="blog-post">
                         <?php if ( has_post_thumbnail() ) :
                             $featured_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'dosth-blog-thumbnail' ); ?>
-                            <div class="blog-post-thumb">
                                 <a href="<?php the_permalink(); ?>"><img src="<?php echo $featured_image[0]; ?>" alt='' /></a>
-                            </div>
                         <?php endif; ?>
                         <h1><?php the_title(); ?></h1>
                         <?php echo custom_excerpt(20); // Display 20 words of the excerpt ?>
@@ -61,3 +61,5 @@ $blog_posts_query = new WP_Query(
 
 <?php get_template_part( 'template-parts/reviews', 'slider' ); ?>
 <?php get_footer(); ?>
+
+

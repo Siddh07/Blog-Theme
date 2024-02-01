@@ -19,7 +19,7 @@ get_header();
 
     $args = array(
         'post_type'      => 'post', // Specify the post type
-        'posts_per_page' => 2, // Number of posts to display
+        'posts_per_page' => -1, // Number of posts to display
         'orderby'        => 'date', // Order posts by date
         'order'          => 'DESC', // Sort posts in descending order
         'paged'          => $paged, // Added pagination parameter

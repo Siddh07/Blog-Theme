@@ -1114,6 +1114,8 @@ textarea {
     background-color:#f9f9f9;
     padding:15px;
     margin-bottom:20px;
+	height: 70%;
+
 }
 .blog-posts .blog-post h2 a{
     color:black;
