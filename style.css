@@ -904,7 +904,7 @@ textarea {
 
 /* Footer Styles */
 #site-footer {
-    background-color: #333;
+	background: #10182F;
     color: #fff;
     padding: 20px 0;
 }
@@ -1076,23 +1076,6 @@ textarea {
 
 
 
-
-/* 
-
-.card{
-	width: 200px;  /* Set width to 200 pixels */
-    
-
-*/
-
-
-/* 
-.entry-header{
-	display: none;
-} */
-
-
-
 *-------------------------------------------------------------------------------
   Index post Styling
 -------------------------------------------------------------------------------*/
@@ -1114,7 +1097,6 @@ textarea {
     background-color:#f9f9f9;
     padding:15px;
     margin-bottom:20px;
-	height: 70%;
 
 }
 .blog-posts .blog-post h2 a{

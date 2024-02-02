@@ -59,6 +59,7 @@ $blog_posts_query = new WP_Query(
     </div> <!-- Closing div tag for row -->
 </div> <!-- Closing div tag for container -->
 
+
 <?php get_template_part( 'template-parts/reviews', 'slider' ); ?>
 <?php get_footer(); ?>
 

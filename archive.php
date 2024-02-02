@@ -42,7 +42,11 @@ get_header();
                 <div class="card-body">
                     <span class="tag tag-teal"><?php echo get_the_category_list( ', ' ); ?></span>
                     <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                    <p><?php echo wp_trim_words( get_the_excerpt(), 20 ); ?></p>
+                    <p><?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
+                    <a class="read-more-link" href="<?php the_permalink(); ?>">
+                            <?php echo get_option( 'draft_readmore_text', __( 'Read More', 'draft' ) ); ?>
+                        </a></p>
+                     
                     <div class="user">
                         <?php echo get_avatar( get_the_author_meta( 'ID' ), 32 ); ?>
                         <div class="user-info">
