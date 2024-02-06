@@ -1613,3 +1613,76 @@ Reviews Slider Styling
 }
 
 
+
+
+/*-------------------------------------------------------------------------------
+Contact 7 Form 
+-------------------------------------------------------------------------------*/
+
+/* Style the entire form container */
+.wpcf7 {
+    background-color: #ffffff;
+    border:  1px solid #cccccc;
+    padding:  20px;
+    margin-bottom:  20px;
+    max-width:  600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style the form fields */
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 input[type="tel"],
+.wpcf7 textarea {
+    width:  100%;
+    padding:  10px;
+    margin-bottom:  10px;
+    border:  1px solid #cccccc;
+    border-radius:  4px;
+    outline: none;
+}
+
+/* Style the submit button */
+.wpcf7 input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding:  10px  20px;
+    border: none;
+    border-radius:  4px;
+    cursor: pointer;
+    transition: background-color  0.3s ease;
+}
+
+.wpcf7 input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the response messages */
+.wpcf7-response-output {
+    margin-top:  10px;
+    padding:  10px;
+    border:  1px solid transparent;
+    border-radius:  4px;
+}
+
+.wpcf7-mail-sent-ok .wpcf7-response-output {
+    border-color: #28a745;
+}
+
+.wpcf7-mail-failed .wpcf7-response-output {
+    border-color: #dc3545;
+}
+
+/* Style validation error messages */
+.wpcf7-not-valid-tip {
+    color: #dc3545;
+    font-size:  0.8em;
+    margin-top:  5px;
+    display: block;
+}
+
+/* Hide the submit button on form init */
+.wpcf7 form.init .wpcf7-response-output {
+    display: none;
+}
