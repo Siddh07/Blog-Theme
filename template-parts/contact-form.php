@@ -1,7 +1,7 @@
 
 <?php
 /*
-Template Name: Custom Template
+Template Name: Contact Form  Template
 */
 get_header();
 
@@ -10,6 +10,8 @@ get_header();
 <?php
   echo do_shortcode('[contact-form-7 id="554dda6" title="Contact form 1"]');
 ?>
+
+
 
 
 
