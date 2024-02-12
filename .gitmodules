@@ -1,6 +1,3 @@
-[submodule "vendor/eftec/bladeone"]
-  path = vendor/eftec/bladeone
-  url = https://github.com/Siddh07/Blog-Theme.git
-[submodule "path/to/submodule"]
-	path = path/to/submodule
+[submodule "vendor/dealerdirect/phpcodesniffer-composer-installer"]
+  path = vendor/dealerdirect/phpcodesniffer-composer-installer
 	url = https://github.com/Siddh07/Blog-Theme.git

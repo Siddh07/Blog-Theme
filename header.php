@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme
  *
@@ -28,12 +29,6 @@
 
     <?php wp_head(); ?>
 </head>
-
-
-
-
-
-
 
 
 <body <?php body_class(); ?>>
@@ -68,18 +63,24 @@
             <div class="site-branding">
                 <?php
                 if (is_front_page() && is_home()) :
-                    ?>
+                ?>
                     <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
                 <?php
                 else :
-                    ?>
+                ?>
                     <p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
                 <?php
                 endif;
                 $draft_description = get_bloginfo('description', 'display');
                 if ($draft_description || is_customize_preview()) :
-                    ?>
-                    <p class="site-description"><?php echo $draft_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+                ?>
+                    <p class="site-description"><?php echo $draft_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+                                                ?></p>
                 <?php endif; ?>
+
+
+
+
+
             </div><!-- .site-branding -->
         </header><!-- #masthead -->
