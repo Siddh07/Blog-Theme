@@ -268,6 +268,28 @@ function register_footer_menu() {
 }
 add_action('init', 'register_footer_menu');
 
+function register_footer_cato_menu() {
+    register_nav_menu('footer_cato', __('Footer Cato'));
+}
+add_action('after_setup_theme', 'register_footer_cato_menu');
+
+
+
+function register_footer_widget() {
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget Area', 'your-theme-textdomain' ),
+        'id'            => 'footer-widget-area',
+        'description'   => __( 'Widgets in this area will be shown in the footer.', 'your-theme-textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'register_footer_widget' );
+
+
+
 /**
  * Register widget area.
  *
