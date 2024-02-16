@@ -9,13 +9,13 @@ body {
   font-family: "Roboto", sans-serif;
   color: #10182f;
 }
-.container {
+.archive-container {
   display: flex;
   width: 1040px;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.card {
+.archive-card {
   margin: 10px;
   background-color: #fff;
   border-radius: 10px;
@@ -23,12 +23,12 @@ body {
   overflow: hidden;
   width: 300px;
 }
-.card-header img {
+.archive-card-header img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
-.card-body {
+.archive-card-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +37,7 @@ body {
   min-height: 250px;
 }
 
-.tag {
+.archive-tag {
   background: #cccccc;
   border-radius: 50px;
   font-size: 12px;
@@ -47,41 +47,44 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
-.tag-teal {
+.archive-tag-teal {
   background-color: #47bcd4;
 }
-.tag-purple {
+.archive-tag-purple {
   background-color: #5e76bf;
 }
-.tag-pink {
+.archive-tag-pink {
   background-color: #cd5b9f;
 }
 
-.card-body p {
+.archive-card-body p {
   font-size: 13px;
   margin: 0 0 40px;
 }
-.user {
+.archive-user {
   display: flex;
   margin-top: auto;
 }
 
-.user img {
+.archive-user img {
   border-radius: 50%;
   width: 40px;
   height: 40px;
   margin-right: 10px;
 }
-.user-info h5 {
+.archive-user-info h5 {
   margin: 0;
 }
-.user-info small {
+.archive-user-info small {
   color: #545d7a;
 }
 
 
 
-
+.archive-pag{
+  padding-top: 10px;
+  padding-left: 30px;
+}
 
 
 

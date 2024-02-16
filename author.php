@@ -50,7 +50,11 @@ get_header();
             <div class="custom-details">
                 <h2><?php
                     $current_user = wp_get_current_user();
-                    echo esc_html($current_user->user_login);
+                    if ($current_user->ID >  0) {
+                        echo esc_html($current_user->user_login);
+                    } else {
+                        echo 'admin';
+                    }
                     ?>
                     <br>
                     <span class="custom-job-title"> Developer</span>
