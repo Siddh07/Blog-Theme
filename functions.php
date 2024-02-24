@@ -620,3 +620,38 @@ add_action( 'after_setup_theme', 'mytheme_setup' );
 //   }
 //   add_filter('wpcf7_contact_form_default_pack', 'mod_contact7_form_title');
   
+
+
+//Block Pattern
+function my_theme_register_block_patterns() {
+    // Register a block pattern for the Featured Article section.
+    register_block_pattern(
+        'my-theme/featured-article',
+        array(
+            'title'       => __( 'Featured Blog', 'my-theme' ),
+            'description' => _x( 'A simple featured article block.', 'Block pattern description', 'my-theme' ),
+            'content'     => '<!-- wp:group -->
+            <!-- wp:paragraph -->
+            <p></p>
+            <!-- /wp:paragraph -->
+            
+            <!-- wp:columns -->
+            <div class="wp-block-columns"><!-- wp:column -->
+            <div class="wp-block-column"><!-- wp:heading -->
+            <h2 class="wp-block-heading">Heading 1</h2>
+            <!-- /wp:heading --></div>
+            <!-- /wp:column -->
+            
+            <!-- wp:column -->
+            <div class="wp-block-column"><!-- wp:heading -->
+            <h2 class="wp-block-heading">Heading 2</h2>
+            <!-- /wp:heading --></div>
+            <!-- /wp:column --></div>
+            <!-- /wp:columns -->
+          <!-- /wp:group -->',
+
+            'categories'    => array( 'my-theme' ),
+        )
+    );
+}
+add_action( 'init', 'my_theme_register_block_patterns' );
