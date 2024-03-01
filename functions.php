@@ -54,9 +54,6 @@ add_image_size( 'dosth-blog-thumbnail', 260, 175, array('center', 'top' ) );
 
 
 
-
-
-
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
@@ -149,15 +146,7 @@ add_action( 'widgets_init', 'draft_widgets_init' );
  * Enqueue scripts and styles.
  */
 
- wp_enqueue_style(       
-	'ubuntu-font',  
-	'<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">',  
-	
-    array(),        
-	false
-);
+
 
 function enqueue_font_awesome() {
     wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css', '', '5.8.1', 'all');
@@ -403,6 +392,11 @@ function draft_output_post_thumb_and_title( $post_id ){ ?>
  
 // add_action('init', 'draft_register_custom_post_types');
 
+
+
+/*
+ * Enqueue Scripts
+ */
 function draft_enqueue_styles() {
     wp_enqueue_style(       
         'normalize',    
@@ -452,16 +446,22 @@ function mytheme_enqueue_scripts() {
     wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js', array(), null, true );
     wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js', array('jquery'), null, true );
     wp_enqueue_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', array('jquery', 'popper'), null, true );
+       wp_enqueue_script('mytheme-infinite-scroll', get_template_directory_uri() . '/js/infinite_scroll.js', array('jquery'), '1.0.0', true);
+    wp_localize_script('mytheme-infinite-scroll', 'mytheme_ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'ajax_nonce' => wp_create_nonce('mytheme_load_more_posts_nonce')
+    ));
+
 }
 add_action( 'wp_enqueue_scripts', 'mytheme_enqueue_scripts' );
 
-function mytheme_enqueue_script() {
+function custom_mytheme_enqueue_script() {
     if (is_archive()) {
         wp_enqueue_style('mytheme-archive', get_template_directory_uri() . '/assets/css/archive.css');
         wp_enqueue_script('mytheme-archive', get_template_directory_uri() . '/assets/js/archive.js', array(), '1.0.0', true);
     }
 }
-add_action('wp_enqueue_scripts', 'mytheme_enqueue_script');
+add_action('wp_enqueue_scripts', 'custom_mytheme_enqueue_script');
 
 function draft_enqueue_scripts() {
     wp_enqueue_script( 
@@ -620,38 +620,31 @@ add_action( 'after_setup_theme', 'mytheme_setup' );
 //   }
 //   add_filter('wpcf7_contact_form_default_pack', 'mod_contact7_form_title');
   
+function load_more_posts() {
+    check_ajax_referer('mytheme_load_more_posts_nonce', 'security');
 
-
-//Block Pattern
-function my_theme_register_block_patterns() {
-    // Register a block pattern for the Featured Article section.
-    register_block_pattern(
-        'my-theme/featured-article',
-        array(
-            'title'       => __( 'Featured Blog', 'my-theme' ),
-            'description' => _x( 'A simple featured article block.', 'Block pattern description', 'my-theme' ),
-            'content'     => '<!-- wp:group -->
-            <!-- wp:paragraph -->
-            <p></p>
-            <!-- /wp:paragraph -->
-            
-            <!-- wp:columns -->
-            <div class="wp-block-columns"><!-- wp:column -->
-            <div class="wp-block-column"><!-- wp:heading -->
-            <h2 class="wp-block-heading">Heading 1</h2>
-            <!-- /wp:heading --></div>
-            <!-- /wp:column -->
-            
-            <!-- wp:column -->
-            <div class="wp-block-column"><!-- wp:heading -->
-            <h2 class="wp-block-heading">Heading 2</h2>
-            <!-- /wp:heading --></div>
-            <!-- /wp:column --></div>
-            <!-- /wp:columns -->
-          <!-- /wp:group -->',
-
-            'categories'    => array( 'my-theme' ),
-        )
+    $paged = $_POST['page'];
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => 1,
+        'paged' => $paged
     );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            // Output the post content here. You can customize this part as needed.
+            echo '<div class="post">';
+            echo '<h2>' . get_the_title() . '</h2>';
+            echo '<div>' . get_the_excerpt() . '</div>';
+            echo '</div>';
+        }
+        wp_reset_postdata();
+    }
+
+    wp_die();
 }
-add_action( 'init', 'my_theme_register_block_patterns' );
+add_action('wp_ajax_load_more_posts', 'load_more_posts');
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
