@@ -398,27 +398,9 @@ function draft_output_post_thumb_and_title( $post_id ){ ?>
  * Enqueue Scripts
  */
 function draft_enqueue_styles() {
-    wp_enqueue_style(       
-        'normalize',    
-        get_stylesheet_directory_uri() . '/assets/css/normalize.css',   
-        array(),        
-        false,      
-        'all' 
-    );
-    wp_enqueue_style(       
-        'bootstrap',    
-        get_stylesheet_directory_uri() . '/assets/css/bootstrap.min.css',   
-        array(),        
-        false,      
-        'all' 
-    );
-    wp_enqueue_style(       
-        'superfish',    
-        get_stylesheet_directory_uri() . '/assets/css/superfish.css',   
-        array(),        
-        false,      
-        'all' 
-    );
+ 
+
+   
     wp_enqueue_style(       
         'slick',    
         get_stylesheet_directory_uri() . '/assets/css/slick.css',   
@@ -442,18 +424,46 @@ function draft_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'draft_enqueue_styles' );
 
+
+
+
+function enqueue_full_jquery() {
+    wp_deregister_script('jquery');
+    wp_register_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), '3.5.1', true);
+    wp_enqueue_script('jquery');
+}
+add_action('wp_enqueue_scripts', 'enqueue_full_jquery');
+
+
 function mytheme_enqueue_scripts() {
-    wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js', array(), null, true );
-    wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js', array('jquery'), null, true );
+    // Enqueue jQuery first
+    wp_enqueue_script( 'jquery' );
+
+    // Enqueue Popper.js
+   
+    // Enqueue Bootstrap JavaScript
     wp_enqueue_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', array('jquery', 'popper'), null, true );
-       wp_enqueue_script('mytheme-infinite-scroll', get_template_directory_uri() . '/js/infinite_scroll.js', array('jquery'), '1.0.0', true);
+
+    // Enqueue Infinite Scroll script after jQuery
+    wp_enqueue_script('mytheme-infinite-scroll', get_template_directory_uri() . '/js/infinite_scroll.js', array('jquery'), '1.0.0', true);
+
+    // Localize the script with the appropriate data
     wp_localize_script('mytheme-infinite-scroll', 'mytheme_ajax_object', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'ajax_nonce' => wp_create_nonce('mytheme_load_more_posts_nonce')
     ));
-
 }
 add_action( 'wp_enqueue_scripts', 'mytheme_enqueue_scripts' );
+
+
+
+
+
+
+
+
+
+
 
 function custom_mytheme_enqueue_script() {
     if (is_archive()) {
@@ -464,27 +474,8 @@ function custom_mytheme_enqueue_script() {
 add_action('wp_enqueue_scripts', 'custom_mytheme_enqueue_script');
 
 function draft_enqueue_scripts() {
-    wp_enqueue_script( 
-        'modernizr', 
-        get_stylesheet_directory_uri() . '/assets/js/modernizr.min.js', 
-        array(), 
-        '1.0.0', 
-        true 
-    );
-    wp_enqueue_script( 
-        'superfish', 
-        get_stylesheet_directory_uri() . '/assets/js/superfish.min.js', 
-        array('jquery'), 
-        '1.0.0', 
-        true 
-    );
-    wp_enqueue_script( 
-        'fitvids', 
-        get_stylesheet_directory_uri() . '/assets/js/jquery.fitvids.js', 
-        array('jquery'), 
-        '1.0.0', 
-        true 
-    );
+
+   
     wp_enqueue_script( 
         'slick', 
         get_stylesheet_directory_uri() . '/assets/js/slick.min.js', 
@@ -648,3 +639,37 @@ function load_more_posts() {
 }
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+
+
+function mytheme_add_meta_box() {
+    add_meta_box(
+        'mytheme_meta_box', // Unique ID
+        'My Theme Meta Box', // Box title
+        'mytheme_meta_box_callback', // Callback function
+        'post', // Post type
+        'normal', // Context
+        'high' // Priority
+    );
+}
+add_action('add_meta_boxes', 'mytheme_add_meta_box');
+
+
+function mytheme_meta_box_callback($post) {
+    // Use get_post_meta() to retrieve the custom title value
+    $custom_title = get_post_meta($post->ID, 'mytheme_custom_title', true);
+    
+    // Output the form field for the custom title
+    echo '<label for="mytheme_custom_title">Custom Title:</label>';
+    echo '<input type="text" id="mytheme_custom_title" name="mytheme_custom_title" value="' . esc_attr($custom_title) . '">';
+}
+
+function mytheme_save_meta_box_data($post_id) {
+    if (isset($_POST['mytheme_custom_title'])) {
+        update_post_meta(
+            $post_id,
+            'mytheme_custom_title',
+            sanitize_text_field($_POST['mytheme_custom_title'])
+        );
+    }
+}
+add_action('save_post', 'mytheme_save_meta_box_data');

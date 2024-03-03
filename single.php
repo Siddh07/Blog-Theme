@@ -96,6 +96,12 @@ get_header();
                 </div>
             </div>
         </div>
+
     <?php endwhile; ?>
+
+    <button id="load-more-btn">Load More</button>
+
+
 </div>
+
 <?php get_footer(); ?>
